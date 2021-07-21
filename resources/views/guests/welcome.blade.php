@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>welcom</h1>
+
+    <div>
+{{--         <h1><a href="{{route('guests.articols.index')}}">Visita gli ARTICOLI</a></h1>
+ --}}    </div>
 @endsection

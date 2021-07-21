@@ -25,5 +25,6 @@ Auth::routes();
 /* Route Admin */
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
+    //Route::get('/', '')
     Route::resource('articols', ArticolController::class);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Articol;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ArticolController extends Controller

@@ -9,6 +9,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Date</th>
+                    <th>Option</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +20,10 @@
                     <td>{{$articol->name}}</td>
                     <td>{{$articol->description}}</td>
                     <td>{{$articol->date}}</td>
-                    <td>View | Edit | Delete</td>
+                    <td><a href="">View</a><br>
+                        <a href="">Edit</a><br>
+                        <a href="">Delete</a>
+                    </td>
                 </tr>
 
                 @endforeach

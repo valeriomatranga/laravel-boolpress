@@ -17,6 +17,9 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <div>
+                <button><a href="{{route('admin.articols.index')}}">Vai agli Articoli</a></button>
+            </div>
         </div>
     </div>
 </div>
