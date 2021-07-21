@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Route Guest  */
 Route::get('/', function () {
-    return view('welcome');
+    return view('guests.welcome');
 });
+Route::resource('articols', ArticolController::class);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+/* Route Admin */
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::resource('articols', ArticolController::class);
+});
