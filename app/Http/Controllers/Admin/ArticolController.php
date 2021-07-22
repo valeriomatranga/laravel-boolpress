@@ -66,7 +66,7 @@ class articolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($articol)
+    public function edit(Articol $articol)
     {
         return view('admin.articols.edit', compact('articol'));
     }

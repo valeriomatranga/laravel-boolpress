@@ -11077,3 +11077,7 @@ body {
   justify-content: flex-end;
 }
 
+.sidebar .nav-link.active {
+  color: white;
+}
+
