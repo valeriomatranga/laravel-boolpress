@@ -15,30 +15,11 @@ class ArticolController extends Controller
      */
     public function index()
     {
-        $articols = Articol::all();
+        $articols = Articol::orderBy('id', 'DESC')->paginate(9);
         return view('guests.articols.index', compact('articols'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -48,40 +29,7 @@ class ArticolController extends Controller
      */
     public function show(Articol $articol)
     {
-        //
+        return view('guests.articols.show', compact('articol'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Articol  $articol
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Articol $articol)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Articol  $articol
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Articol $articol)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Articol  $articol
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Articol $articol)
-    {
-        //
-    }
 }

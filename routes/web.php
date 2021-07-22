@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Route Guest  */
-Route::get('/', function () {
-    return view('guests.welcome');
-});
-Route::resource('articols', ArticolController::class);
+Route::get('/', 'HomeController@index');
+Route::get('about', 'HomeController@about');
+Route::get('contacts', 'HomeController@contacts');
+
+Route::get('articols', 'ArticolController@index')->name('articols.index');
+Route::get('articols/{articol}', 'ArticolController@show')->name('articols.show');
 
 Auth::routes();
 
