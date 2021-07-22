@@ -4,7 +4,13 @@
 @section('content')
     
     @foreach ($articols as $articol)
-        <h2>{{$articol->name}}</h2>
+        <div class="container">
+            <h2>{{$articol->name}}</h2>
+            <p>{{$articol->description}}</p>
+            <div>
+                <span>{{$articol->date}}</span>
+            </div>
+        </div>
     @endforeach
 
 @endsection
