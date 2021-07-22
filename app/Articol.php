@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articol extends Model
 {
-    //
+    protected $fillable = ['name', 'description', 'date'];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Articol;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class articolController extends Controller
 {
@@ -15,7 +16,7 @@ class articolController extends Controller
      */
     public function index()
     {
-        $articols = Articol::all();
+        $articols = Articol::all()->sortByDesc('id');
         return view('admin.articols.index', compact('articols'));
     }
 
@@ -26,7 +27,7 @@ class articolController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articols.create');
     }
 
     /**
@@ -37,7 +38,15 @@ class articolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //ddd($request->all());
+
+        $validatedData = $request->validate([
+            'name' => 'required | max:255 | min:5',
+            'description' => 'required',
+            'date' => 'required'
+        ]);
+        Articol::create($validatedData);
+        return redirect()->route('admin.articols.index');
     }
 
     /**
@@ -46,9 +55,9 @@ class articolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Articol $articol)
     {
-        //
+        return view('admin.articols.show', compact('articol'));
     }
 
     /**
@@ -57,9 +66,9 @@ class articolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($articol)
     {
-        //
+        return view('admin.articols.edit', compact('articol'));
     }
 
     /**
@@ -69,9 +78,16 @@ class articolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Articol $articol)
     {
-        //
+        $validatedData = $request->validate([
+        'name' => 'required | max:255 | min:5',
+        'description' => 'required',
+        'date' => 'required'
+        ]);
+        $articol->update($validatedData);
+        return redirect()->route('admin.articols.index');
+    
     }
 
     /**
@@ -80,8 +96,9 @@ class articolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Articol $articol)
     {
-        //
+        $articol->delete();
+        return redirect()->route('admin.articols.index');
     }
 }
