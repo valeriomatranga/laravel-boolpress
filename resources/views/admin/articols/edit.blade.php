@@ -14,13 +14,19 @@
 
     <h1>Crea nuovo Articolo</h1>
     
-    <form action="{{route('admin.articols.update', $articol->id)}}" method="post">
+    <form action="{{route('admin.articols.update', $articol->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
           <label for="name">Titolo</label>
           <input type="text" name="name" value="{{$articol->name}}" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Inserisci il titolo" aria-describedby="helpId">
           <small id="helpId" class="text-muted">max 255 caratteri</small>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Cmbia immagine</label>
+          <img src="{{asset('storage/' . $articol->image)}}" alt="">
+          <input type="text" name="image" id="image" class="form-control" value="{{$articol->image}}" placeholder="" aria-describedby="helpId">
         </div>
 
         <div class="form-group">

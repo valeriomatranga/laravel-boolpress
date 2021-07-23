@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Articol;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class articolController extends Controller
@@ -42,9 +43,16 @@ class articolController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required | max:255 | min:5',
+            'image' => 'required | image | max:100',
             'description' => 'required',
             'date' => 'required'
         ]);
+
+        if($request->hasFile('image')){
+            $file_path = Storage::put('articol_image', $validatedData['image']);
+            $validatedData['image'] = $file_path;
+        }
+
         Articol::create($validatedData);
         return redirect()->route('admin.articols.index');
     }
@@ -81,10 +89,17 @@ class articolController extends Controller
     public function update(Request $request, Articol $articol)
     {
         $validatedData = $request->validate([
-        'name' => 'required | max:255 | min:5',
-        'description' => 'required',
-        'date' => 'required'
+            'name' => 'required | max:255 | min:5',
+            'image' => 'required | image | max:100',
+            'description' => 'required',
+            'date' => 'required'
         ]);
+
+        if(array_key_exists('image', $validatedData)){
+            $file_path = Storage::put('articol_image', $validatedData['image']);
+            $validatedData['image'] = $file_path;            
+        }
+
         $articol->update($validatedData);
         return redirect()->route('admin.articols.index');
     

@@ -8,6 +8,7 @@ class Articol extends Model
 {
     protected $fillable = [
         'name',
+        'image',
         'description',
         'date'
     ];

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+    <img src="{{asset('storage/' . $articol->image)}}" alt="{{$articol->name}}">
     <h1>{{$articol->name}}</h1>
     <p>{{$articol->description}}</p>
     <div>

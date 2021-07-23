@@ -14,6 +14,7 @@ class ArticolsSeeder extends Seeder
     {
         for ($i=0; $i < 10; $i++) { 
             $articol = new Articol();
+            $articol->image = $faker->imageUrl(300, 300, 'Posts', true, $articol->title);
             $articol->name = $faker->word();
             $articol->description = $faker->paragraph();
             $articol->date = $faker->dateTime();
