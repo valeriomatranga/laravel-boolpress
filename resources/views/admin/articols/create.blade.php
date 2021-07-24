@@ -2,16 +2,7 @@
 
 @section('content')
 
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+    @include('partials.error')
     <h1>Crea nuovo Articolo</h1>
     
     <form action="{{route('admin.articols.store')}}" method="post" enctype="multipart/form-data">

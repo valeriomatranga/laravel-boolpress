@@ -14,18 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route Guest  */
+/* Pagine non connesse ad un modello */
 Route::get('/', 'HomeController@index');
-Route::get('about', 'HomeController@about');
-Route::get('contacts', 'HomeController@contacts');
+Route::get('about', 'HomeController@about')->name('about');
 
+/* Route contact OP[1] senza modello */
+Route::get('contacts', 'HomeController@contacts')->name('contacts');
+Route::get('contacts', 'HomeController@sendContactForm')->name('contacts.send');
+
+/* Route Contact OP[2] con modello */
+#Route::get('contacts', 'ContactController@form')->name('contacts');
+#Route::get('contacts', 'ContactController@storeAndSend')->name('contacts.send');
+
+/* Route Articol */
 Route::get('articols', 'ArticolController@index')->name('articols.index');
 Route::get('articols/{articol}', 'ArticolController@show')->name('articols.show');
 
-Auth::routes();
-
 
 /* Route Admin */
+Auth::routes();
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('articols', ArticolController::class);
