@@ -10,6 +10,5 @@ class Articol extends Model
         'name',
         'image',
         'description',
-        'date'
     ];
 }

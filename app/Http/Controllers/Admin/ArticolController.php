@@ -43,9 +43,8 @@ class articolController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required | max:255 | min:5',
-            'image' => 'required | image | max:100',
+            'image' => 'required | max:100',
             'description' => 'required',
-            'date' => 'required'
         ]);
 
         if($request->hasFile('image')){
@@ -90,9 +89,8 @@ class articolController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required | max:255 | min:5',
-            'image' => 'required | image | max:100',
+            'image' => 'required | max:100',
             'description' => 'required',
-            'date' => 'required'
         ]);
 
         if(array_key_exists('image', $validatedData)){

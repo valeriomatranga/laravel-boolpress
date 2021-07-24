@@ -16,7 +16,6 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Date</th>
                     <th>Option</th>
                 </tr>
             </thead>
@@ -25,10 +24,9 @@
                     
                 <tr>
                     <td scope="row">{{$articol->id}}</td>
-                    <td><img src="{{asset('storage/' . $articol->image)}}" alt=""></td>
+                    <td><img style="width: 300px; height: 200px;" src="{{asset('storage/' . $articol->image)}}" alt=""></td>
                     <td>{{$articol->name}}</td>
                     <td>{{$articol->description}}</td>
-                    <td>{{$articol->date}}</td>
                     <td>
                         <a href="{{route('admin.articols.show', $articol->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a><br>
                         <a href="{{route('admin.articols.edit', $articol->id)}}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a><br>

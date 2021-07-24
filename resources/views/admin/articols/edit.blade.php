@@ -24,19 +24,14 @@
         </div>
 
         <div class="form-group">
-          <label for="image">Cmbia immagine</label>
-          <img src="{{asset('storage/' . $articol->image)}}" alt="">
-          <input type="text" name="image" id="image" class="form-control" value="{{$articol->image}}" placeholder="" aria-describedby="helpId">
+            <label for="image">Cambia immagine</label>
+            <img src="{{asset('storage/' . $articol->image)}}" alt="">
+            <input type="file" name="image" id="image">
         </div>
 
         <div class="form-group">
             <label for="description">Descrizione</label>
             <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" cols="30" rows="10">{{$articol->description}}</textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="date">Data</label>
-          <input type="text" name="date" id="date" value="{{$articol->date}}" class="form-control @error('date') is-invalid @enderror" placeholder="Inserisci la data" aria-describedby="helpId">
         </div>
 
         <button type="submit" class="btn btn-primary">Invia</button>

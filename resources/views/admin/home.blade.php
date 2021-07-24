@@ -17,10 +17,9 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
-            <div>
-                <button><a href="{{route('admin.articols.index')}}">Vai agli Articoli</a></button>
-            </div>
         </div>
+
+        <img src="https://media.istockphoto.com/vectors/welcome-text-drawing-vector-id497834524" alt="">
     </div>
 </div>
 @endsection
