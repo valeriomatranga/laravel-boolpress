@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Articol;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,8 @@ class articolController extends Controller
      */
     public function create()
     {
-        return view('admin.articols.create');
+        $categories = Category::all();
+        return view('admin.articols.create', compact('categories'));
     }
 
     /**
@@ -44,6 +46,7 @@ class articolController extends Controller
         $validatedData = $request->validate([
             'name' => 'required | max:255 | min:5',
             'image' => 'required | max:100',
+            'category_id' => 'nullable | exists:categories,id',
             'description' => 'required',
         ]);
 

@@ -9,6 +9,6 @@
 <body>
     <h1>Ciao. Hai un nuovo messaggio da {{$data['full_name']}}</h1>
     <p>Messaggio da: {{$data['email']}}</p>
-    <p>Messaggio: {{$data['messag']}}</p>
+    <p>Messaggio: {{$data['message']}}</p>
 </body>
 </html>

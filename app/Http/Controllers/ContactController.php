@@ -17,17 +17,23 @@ class ContactController extends Controller
 
     public function storeAndSend(Request $request)
     {
+        //ddd($request->all());
+
+        #Valida i dati
         $validateData = $request->validate([
             'full_name' => 'required',
             'email' => 'required | email',
             'message' => 'required'
         ]);
-        //salva nel database
+        //ddd($validateData);
+
+        #Salva nel database
         $contact = Contact::create($validateData);
+        //ddd($contact);
 
-        //return (new ContactFormMarkdown($contact))->render();
-
-        Mail::to('admin@test.com')->send(new ContactFormMarkdown($contact));
+        #Invia la mail
+        //Mail::to('admin@test.com')->send(new ContactFormMarkdown($contact));
+        Mail::to('admin@test.com')->send(new ContactFormMail($validateData));
         return redirect()
         ->back()
         ->with('message', 'Grazie per averci contattato, riceverai una risposta entro 48 ore');

@@ -2,8 +2,9 @@
 
 namespace App\Mail;
 
+#use App\Contact;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+#use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -30,7 +31,7 @@ class ContactFormMail extends Mailable
     public function build()
     {
         return $this
-            ->from('noreply@ezample.com')
+            ->from('noreply@example.com')
             ->subject('New Message')
             ->view('emails.contacts');
     }

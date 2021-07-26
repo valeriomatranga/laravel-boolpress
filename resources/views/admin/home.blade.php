@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <img src="https://media.istockphoto.com/vectors/welcome-text-drawing-vector-id497834524" alt="">
+        <img src="../../img/ClipartKey_99224.png" alt="">
     </div>
 </div>
 @endsection
