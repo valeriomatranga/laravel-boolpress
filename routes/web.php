@@ -19,12 +19,12 @@ Route::get('/', 'HomeController@index');
 Route::get('about', 'HomeController@about')->name('about');
 
 /* Route contact OP[1] senza modello */
-Route::get('contacts', 'HomeController@contacts')->name('contacts');
+/* Route::get('contacts', 'HomeController@contacts')->name('contacts');
 Route::get('contacts', 'HomeController@sendContactForm')->name('contacts.send');
-
+ */
 /* Route Contact OP[2] con modello */
-#Route::get('contacts', 'ContactController@form')->name('contacts');
-#Route::get('contacts', 'ContactController@storeAndSend')->name('contacts.send');
+Route::get('contacts', 'ContactController@form')->name('contacts');
+Route::post('contacts', 'ContactController@storeAndSend')->name('contacts.send');
 
 /* Route Articol */
 Route::get('articols', 'ArticolController@index')->name('articols.index');
