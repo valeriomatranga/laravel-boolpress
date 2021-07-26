@@ -19,7 +19,8 @@ class articolController extends Controller
     public function index()
     {
         $articols = Articol::all()->sortByDesc('id');
-        return view('admin.articols.index', compact('articols'));
+        $categories = Category::all();
+        return view('admin.articols.index', compact('articols', 'categories'));
     }
 
     /**
@@ -78,7 +79,8 @@ class articolController extends Controller
      */
     public function edit(Articol $articol)
     {
-        return view('admin.articols.edit', compact('articol'));
+        $categories = Category::all();
+        return view('admin.articols.edit', compact('articol','categories'));
     }
 
     /**
@@ -93,6 +95,7 @@ class articolController extends Controller
         $validatedData = $request->validate([
             'name' => 'required | max:255 | min:5',
             'image' => 'required | max:100',
+            'category_id' => 'nullable | exists:categories,id',
             'description' => 'required',
         ]);
 

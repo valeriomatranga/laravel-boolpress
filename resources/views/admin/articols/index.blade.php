@@ -25,7 +25,7 @@
                     
                 <tr>
                     <td scope="row">{{$articol->id}}</td>
-                    <td>{{$articol->category_id}}</td>
+                    <td>{{$articol->category->name}}</td>
                     <td><img style="width: 300px; height: 200px;" src="{{asset('storage/' . $articol->image)}}" alt=""></td>
                     <td>{{$articol->name}}</td>
                     <td>{{$articol->description}}</td>

@@ -34,6 +34,18 @@
             <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" cols="30" rows="10">{{$articol->description}}</textarea>
         </div>
 
+        <div class="form-group">
+          <label for="category_id">Categories</label>
+          <select class="form-control" name="category_id" id="category_id">
+            <option value="">Seleziona Categoria</option>
+
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}" {{$category->id == old('category_id', $articol->category_id) ? 'selected' : ''}}>{{$category->name}}</option>
+            @endforeach
+          </select>
+        </div>
+
+
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 @endsection
