@@ -32,8 +32,8 @@ class ContactController extends Controller
         //ddd($contact);
 
         #Invia la mail
-        //Mail::to('admin@test.com')->send(new ContactFormMarkdown($contact));
-        Mail::to('admin@test.com')->send(new ContactFormMail($validateData));
+        Mail::to('admin@test.com')->send(new ContactFormMarkdown($contact));
+        //Mail::to('admin@test.com')->send(new ContactFormMail($validateData));
         return redirect()
         ->back()
         ->with('message', 'Grazie per averci contattato, riceverai una risposta entro 48 ore');

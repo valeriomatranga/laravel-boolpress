@@ -30,6 +30,8 @@ Route::post('contacts', 'ContactController@storeAndSend')->name('contacts.send')
 Route::get('articols', 'ArticolController@index')->name('articols.index');
 Route::get('articols/{articol}', 'ArticolController@show')->name('articols.show');
 
+/* Route Categories */
+Route::get('categories/{category:slug}', 'CategoryController@show')->name('categories.show');
 
 /* Route Admin */
 Auth::routes();
