@@ -43,6 +43,13 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label for="tag">Tag</label>
+          <select multiple class="form-control" name="" id="">
+            
+          </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 @endsection
