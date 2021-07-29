@@ -45,8 +45,10 @@
 
         <div class="form-group">
           <label for="tag">Tag</label>
-          <select multiple class="form-control" name="" id="">
-            
+          <select multiple class="form-control" name="tag" id="tag">
+            @foreach ($tags as $tag)
+                <option value="">{{$tag->name}}</option>
+            @endforeach
           </select>
         </div>
 

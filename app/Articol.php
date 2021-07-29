@@ -12,7 +12,8 @@ class Articol extends Model
         'name',
         'image',
         'description',
-        'category_id'
+        'category_id',
+        
     ];
 
     public function category(): BelongsTo

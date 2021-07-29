@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Articol;
 use App\Category;
+use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,8 @@ class articolController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.articols.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.articols.create', compact('categories', 'tags'));
     }
 
     /**
@@ -48,6 +50,7 @@ class articolController extends Controller
             'name' => 'required | max:255 | min:5',
             'image' => 'required | max:100',
             'category_id' => 'nullable | exists:categories,id',
+            'tags' => 'exists:tags,id',
             'description' => 'required',
         ]);
 
@@ -68,7 +71,8 @@ class articolController extends Controller
      */
     public function show(Articol $articol)
     {
-        return view('admin.articols.show', compact('articol'));
+        $tags = Tag::all();
+        return view('admin.articols.show', compact('articol','tags'));
     }
 
     /**

@@ -14,7 +14,7 @@
         <a class="btn btn-secondary" href="{{route('articols.index')}}">Back</a>
 
         <div class="tags">
-            @forelse ($articol->tags as $tag)
+            @forelse($articol->tags as $tag)
                 <span>{{$tag->name}}</span>
             @empty
                 <span>No tags</span>

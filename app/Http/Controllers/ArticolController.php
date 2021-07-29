@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Articol;
+use App\Category;
+use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -29,6 +31,7 @@ class ArticolController extends Controller
      */
     public function show(Articol $articol)
     {
+
         return view('guests.articols.show', compact('articol'));
     }
 

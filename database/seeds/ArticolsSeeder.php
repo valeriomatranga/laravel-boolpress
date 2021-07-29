@@ -17,7 +17,6 @@ class ArticolsSeeder extends Seeder
             $articol->image = $faker->imageUrl(300, 300, 'Posts', true, $articol->title);
             $articol->name = $faker->word();
             $articol->description = $faker->paragraph();
-            $articol->date = $faker->dateTime();
             $articol->save();
         }
     }
