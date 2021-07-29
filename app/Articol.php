@@ -11,9 +11,9 @@ class Articol extends Model
     protected $fillable = [
         'name',
         'image',
-        'description',
         'category_id',
-        
+        'description',
+
     ];
 
     public function category(): BelongsTo
@@ -26,5 +26,5 @@ class Articol extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    
+
 }

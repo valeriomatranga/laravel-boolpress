@@ -2,6 +2,8 @@
 use App\Articol;
 use Illuminate\Database\Seeder;
 use Faker\Generator as faker;
+use Illuminate\Support\Str;
+
 
 class ArticolsSeeder extends Seeder
 {
@@ -12,7 +14,7 @@ class ArticolsSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
             $articol = new Articol();
             $articol->image = $faker->imageUrl(300, 300, 'Posts', true, $articol->title);
             $articol->name = $faker->word();

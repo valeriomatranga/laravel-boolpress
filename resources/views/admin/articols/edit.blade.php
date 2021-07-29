@@ -13,7 +13,7 @@
     @endif
 
     <h1>Crea nuovo Articolo</h1>
-    
+
     <form action="{{route('admin.articols.update', $articol->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -45,6 +45,14 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <select multiple class="form-control" name="tags[]" id="tags">
+            @foreach ($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endforeach
+          </select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>

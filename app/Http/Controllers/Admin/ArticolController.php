@@ -21,7 +21,8 @@ class articolController extends Controller
     {
         $articols = Articol::all()->sortByDesc('id');
         $categories = Category::all();
-        return view('admin.articols.index', compact('articols', 'categories'));
+        $tags = Tag::all();
+        return view('admin.articols.index', compact('articols', 'categories', 'tags'));
     }
 
     /**
@@ -50,16 +51,19 @@ class articolController extends Controller
             'name' => 'required | max:255 | min:5',
             'image' => 'required | max:100',
             'category_id' => 'nullable | exists:categories,id',
-            'tags' => 'exists:tags,id',
+            'tags' => 'nullable | exists:tags,id',
             'description' => 'required',
         ]);
+
+        //ddd($validatedData);
 
         if($request->hasFile('image')){
             $file_path = Storage::put('articol_image', $validatedData['image']);
             $validatedData['image'] = $file_path;
         }
 
-        Articol::create($validatedData);
+        $articol = Articol::create($validatedData);
+        $articol->tags()->attach($request->tags);
         return redirect()->route('admin.articols.index');
     }
 
@@ -84,7 +88,9 @@ class articolController extends Controller
     public function edit(Articol $articol)
     {
         $categories = Category::all();
-        return view('admin.articols.edit', compact('articol','categories'));
+        $tags = Tag::all();
+
+        return view('admin.articols.edit', compact('articol','categories','tags'));
     }
 
     /**
@@ -100,17 +106,19 @@ class articolController extends Controller
             'name' => 'required | max:255 | min:5',
             'image' => 'required | max:100',
             'category_id' => 'nullable | exists:categories,id',
+            'tags' => 'nullable | exists:tags,id',
             'description' => 'required',
         ]);
 
         if(array_key_exists('image', $validatedData)){
             $file_path = Storage::put('articol_image', $validatedData['image']);
-            $validatedData['image'] = $file_path;            
+            $validatedData['image'] = $file_path;
         }
 
-        $articol->update($validatedData);
+        $articol = Articol::create($validatedData);
+        $articol->tags()->attach($request->tags);
         return redirect()->route('admin.articols.index');
-    
+
     }
 
     /**

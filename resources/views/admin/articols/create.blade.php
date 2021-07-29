@@ -4,7 +4,7 @@
 
     @include('partials.error')
     <h1>Crea nuovo Articolo</h1>
-    
+
     <form action="{{route('admin.articols.store')}}" method="post" enctype="multipart/form-data">
     @csrf
         <div class="form-group">
@@ -25,8 +25,8 @@
         </div>
         @error('image')
             <div class="alert alert-danger">{{$message}}</div>
-        @enderror   
-         
+        @enderror
+
         <div class="form-group">
             <label for="description">Descrizione</label>
             <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" cols="30" rows="10">{{old('description')}}</textarea>
@@ -44,10 +44,10 @@
         </div>
 
         <div class="form-group">
-          <label for="tag">Tag</label>
-          <select multiple class="form-control" name="tag" id="tag">
+          <label for="tags">Tags</label>
+          <select multiple class="form-control" name="tags[]" id="tags">
             @foreach ($tags as $tag)
-                <option value="">{{$tag->name}}</option>
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
             @endforeach
           </select>
         </div>
