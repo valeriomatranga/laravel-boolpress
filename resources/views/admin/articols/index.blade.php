@@ -14,8 +14,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Category</th>
-{{--                     <th>Tag</th>
- --}}                    <th>Image</th>
+                    <th>Tag</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Option</th>
@@ -27,8 +27,12 @@
                 <tr>
                     <td scope="row">{{$articol->id}}</td>
                     <td>{{$articol->category->name}}</td>
-{{--                     <td>{{$articol->tag->name}}</td>
- --}}                    <td><img style="width: 300px; height: 200px;" src="{{asset('storage/' . $articol->image)}}" alt=""></td>
+                    <td>
+                        @foreach ($articol->tags as $tag)
+                            {{ $loop->last ? $tag->name : $tag->name . ' | ' }}
+                        @endforeach
+                    </td>
+                    <td><img style="width: 300px; height: 200px;" src="{{asset('storage/' . $articol->image)}}" alt=""></td>
                     <td>{{$articol->name}}</td>
                     <td>{{$articol->description}}</td>
                     <td>

@@ -1,7 +1,11 @@
   <?php
 
+use App\Articol;
 use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\ArticolResource;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +42,12 @@ Auth::routes();
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('articols', ArticolController::class);
+    Route::get('articols/{articol}', function (Articol $articol){
+        return new ArticolResource(Articol::find($articol));
+    });
+});
+
+/* Route Vue */
+Route::get('vue_articols', function(){
+    return view('articols');
 });
